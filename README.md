@@ -17,14 +17,11 @@
 - 14/06 Added material from 21T2 Project Plan
 - 21/06 .wav file information added
 - 28/06 Spectrogram and Bandpass Filter added
-
-## Questions for Academics
-
-- 
+- 06/07 Relocated file locations updated
 
 ## Known Issues
 
-- `src.format_csv.csv_format` does not run when called in other files. If you run `format_csv.py` it runs properly though.
+-
 
 ## 1. Aims:
 
@@ -44,40 +41,7 @@
 
 ### 3.1 Matplotlib Library in Python
 
-- Matplotlib is a useful library for plotting graphs.
-- To graph something in Python using Matplotlib, there are two lines of code we need:
-- The first line is,
-
-  ```python
-    matplotlib.pyplot.plot(<x axis data>, <y axis data>)
-  ```
-
-- The second line is,
-
-  ```python
-    matplotlib.pyplot.show()
-  ```
-
-- Since it can be annoying to type out 'matplotlib.pyplot' every time we want to call something from the library we can simply state at the top:
-
-  ```python
-    from matplotlib import pyplot as plt
-  ```
-
-- This means that we can simply write 'plt' wherever we had 'matplotlib.pyplot'
-
-  ```python
-      plt.plot(<x axis data>, <y axis data>)
-      plt.show()
-  ```
-
-- Now if we run the code using our normal command 'python3 <filename>.py', we should have a new window pop up with the graph.
-
-  - Keep in mind the default graph type for matplotlib is a line graph. If we want another type of graph we will have to specify its type as follows:
-
-  ```python
-      plt.plot(kind='<graph type>', x='<x axis data>', y='<y axis data>')
-  ```
+- Matplotlib is a useful library in Python and it has been used extensively to visualise data acquired during the labs.
 
 #### 3.1.1 Known issues with Matplotlib and WSL (Windows Subsystem for Linux)
 
@@ -86,8 +50,6 @@
   ```python
       matplotlib.pyplot.show()
   ```
-
-- Our initial workaround in `scatter.py` is to instead save a PNG of the plot in the same directory as `scatter.py` and open it. It has since been discovered that executing the Python code in a Jupyter notebook allows for dynamic production of figures in VSCode.
 
 ### 3.2 Visualising Data Acquired from CSV files
 
@@ -111,18 +73,18 @@
 ##### Modified Format of CSV files from oscilloscope
 
 ```csv
-    x_axis,channel_2,channel_4
-    -4.9921875,0.03624,0.0
-    -4.9914063,0.03021,-0.0
-    -4.990625,0.03021,-0.0
-    -4.9898438,0.03423,-0.002
-    -4.9890625,0.03423,-0.0
+    x_axis,channel_2
+    -4.9921875,0.03624
+    -4.9914063,0.03021
+    -4.990625,0.03021
+    -4.9898438,0.03423
+    -4.9890625,0.03423
     ...
 ```
 
 #### 3.2.1 Plotting the Data from the CSV Files
 
-- There exists a file `plot.py` in **src** which contains several functions for plotting both raw csv data, cleaned csv data, and their Fast Fourier Transform (FFT).
+- There exists notebooks in **src** which contains several functions for plotting both raw csv data, cleaned csv data, and their Fast Fourier Transform (FFT).
 
   ```python
       scope_num = 0
@@ -131,8 +93,7 @@
   ```
 
   By changing the values of 'scope_num' and 'lab_num', specific csv files can be accessed and coresponding plots can be generated within a Jupyter notebook.
-  This will also save a high-quality png into the same directory as the 'scatter.py' file. This plot is generated from the matplotlib library and looks like  
-  the plot below
+  This will also save a high-quality png under `data/Plots`
 
 ![](docs/scope_0.png)
 
@@ -166,8 +127,6 @@ A line graph version of the same data can be seen below:
 
 ## 4. Data Cleaning
 
-blah blah can do later, copy from Project Plan
-
 ### 4.1 Fast Fourier Transform (FFT)
 
 - In layman's terms, the Fourier Transform is a mathematical operation that changes the domain (x-axis) of a signal from time to frequency
@@ -178,11 +137,9 @@ blah blah can do later, copy from Project Plan
 
 #### 4.1.1 Implementing FFT using Python
 
-- Located in `src` is a file called `fft_example.py`. This file takes any of the csv files obtained from the labs and outputs a plot of the original function, its FFT and an inverse FFT with reduced noise. An example is shown below.
+- Located in `src` is a Jupyter Notebook called `fft.ipynb`. This file takes any of the csv files obtained from the labs and outputs a plot of the original function, its FFT and an inverse FFT with reduced noise. An example is shown below.
 
 ![](docs/fft_sample.png)
-
-- However, it is in fact much easier to use the file `fft.ipynb` located in the `smart_wearable_tech` directory. This is a Jupyter Notebook, allowing for the division of code into small cells which can be individually run and debugged accordingly.
 
 ### 4.2 Bandpass Filters
 
@@ -190,7 +147,7 @@ blah blah can do later, copy from Project Plan
 
 #### 4.1.1 Implementing Bandpass Filters using Python
 
-- Located in the main directory is a file called `bandpass.ipynb`. This file takes any of the csv files obtained from the labs and outputs a plot of the original function and its filtered plot. An example is shown below.
+- Located in the `src` is a file called `bandpass.ipynb`. This file takes any of the csv files obtained from the labs and outputs a plot of the original function and its filtered plot. An example is shown below.
 
 ![](docs/bandpass.png)
 
