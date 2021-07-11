@@ -1,17 +1,16 @@
 # Data 📊
 
-This section describes how the team has organised our data and where to retrieve specific files and plots.
+This section describes how the team has organised our data and where to retrieve specific files and plots. 
 
-## Future Improvements
+## File Naming Convention
 
-- Instead of having data sorted by Labs, it will be better to sort by words. E.g. 'Alpha', 'Bravo' etc.
-- Naming convention for files should be changed to include:
+- Files will be named using the following convention:
+```
+  <word>_<lab_num>_<index>_<speaker>.csv
 
-  1. The word it represents
-  2. The date the data was collected
-  3. Who the test subject was ? Maybe include a naming convention such as initials. (AM = Akira, AK=Andrew, etc)
-
-  - Maybe something like `apple_07/25_AM.csv` ? Discuss on Sunday 07/04
+```
+ - where `<word>` is the word spoken, `<lab_num>` is the lab where the data was acquired(full information about each lab can be found in the table at the bottom of the README.md), `<index>` tells which repetition of the word the data represents and `<speaker>` refers to who the test subject was
+- An example would be `alpha_00_23_AM.csv`
 
 ## Audio 🔈
 
@@ -68,3 +67,45 @@ This section describes how the team has organised our data and where to retrieve
 
   - Spectrogram generated of raw data obtained from labs.
   - Source file: `spectrogram.ipynb`
+
+# Lab File Table
+
+- These are just temporary inclusions to the table, Lab 00 will actually be the next lab we have so we can propely acquire data in the format we settled on.
+- Feel free to play around with the table to learn how html tables work. Also, add any new keys (`Subject`, `Date` etc) to the `notes` section if you think it's appropriate.
+
+<table>
+  <tr>
+    <th>Lab Number</th>
+    <th>Sensor Number</th>
+    <th>Notes</th>
+  </tr>
+  <tr>
+    <td><br>Lab 00<br /><br />
+    <td><b>1,2,3</b>
+    <td>
+      <b>Subject:</b> Dave 
+      <br><b>Date:</b> 03/21 
+      <br><b>Words:</b> alpha,bravo,charlie,Zulu
+    </td>
+
+  </tr>
+    <tr>
+    <td><br>Lab 01<br /><br />
+    <td><b>1,2,3</b>
+    <td>
+      <b>Subject:</b> Andrew
+      <br><b>Date:</b> 03/27 
+      <br><b>Words:</b> alpha,bravo,charlie,Zulu
+    </td> 
+  </tr>
+    <tr>
+    <td><br>Lab 02<br /><br />
+    <td><b>1,2,3</b>
+    <td>
+      <b>Subject:</b> Akira
+      <br><b>Date:</b> 06/25 
+      <br><b>Words:</b> alpha,bravo,charlie,Zulu
+    </td> 
+  </tr>
+  
+</table>
