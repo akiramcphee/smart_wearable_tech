@@ -60,12 +60,22 @@ def generate_random_variation(filename, var_num, kind):
             shift(df)
 
         i += 1
+    # Clean off ends
+    for k, v in df.iteritems():
+        v[v < 0] = 0
+        v[v > 5] = 5
 
     plt.plot(df['Time'], df['Sensor'])
-
+    # if var_num == 0:
+    # plt.show()
     # Save plot
-    if kind == 'image' or kind == 'comparison_image' and var_num > 0:
-        image_path = f'{filename}_var_{var_num}.png'
+    if (kind == 'image' or kind == 'comparison_image'):
+        plt.clf()
+        plt.specgram(df['Sensor'], Fs=2, cmap="rainbow", noverlap=250)
+        plt.axis(False)
+        scope_num = filename[:-4]
+        scope_num = scope_num[-1]
+        image_path = f'fabricated_data/{scope_num}/scope{scope_num}_var_{var_num}.png'
         plt.savefig(image_path, dpi=300,
                     bbox_inches='tight', transparent=False)
     elif kind == 'csv' and var_num > 0:
@@ -73,6 +83,7 @@ def generate_random_variation(filename, var_num, kind):
 
     # Clear plot for the next variation, matplotlib doesn't do this automatically
     plt.clf()
+    pass
 
 
 def scale(df):
@@ -92,8 +103,9 @@ def scale(df):
         scale_factor = random.randint(7, 14)/10
         # Determines the spacing between elements to get scaled
         scale_element = random.randint(4, 100)
+        scale_neighbour = random.randint(2, 10)
         if j % scale_element == 0:
-            df["Sensor"][j] *= (scale_factor)
+            df["Sensor"][j:scale_neighbour+j] *= (scale_factor)
         j += 1
     pass
 
@@ -115,9 +127,10 @@ def shift(df):
 
     df["Time"] += (shift_factor_x)
     df["Sensor"] += (shift_factor_y)
+
     pass
 
 
 if __name__ == '__main__':
-    filename = 'fabricated_data/scope_0.csv'
-    generate_random_variation(filename, 1)
+    filename = 'fabricated_data/csv/scope_0.csv'
+    generate_random_variation(filename, 0, 'image')
