@@ -13,12 +13,18 @@ class Fabrication(object):
 
 
 if __name__ == '__main__':
-    i = 0
-    while i < 11:  # Loop through the different scopes
-        j = 100
-        while j < 1000:  # Number of samples for each scope
-            filename = f'fabricated_data/csv/scope_{i}.csv'
-            scope = Fabrication(filename, j)
-            scope.generate_random_variation(kind='image')
-            j += 1
+    # i = 26
+    # while i < 27:  # Loop through the different scopes
+    #     j = 0
+    #     while j < 1000:  # Number of samples for each scope
+    #         filename = f'csv/scope_{i}.csv'
+    #         scope = Fabrication(filename, j)
+    #         scope.generate_random_variation(kind='image')
+    #         j += 1
+    #     i += 1
+    i = 10
+    while i < 26:  # Loop through the different scopes
+        filename = f'csv/scope_{i}.csv'
+        scope = Fabrication(filename, i)
+        scope.generate_random_variation(kind='image')
         i += 1

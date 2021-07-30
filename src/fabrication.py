@@ -74,9 +74,10 @@ def generate_random_variation(filename, var_num, kind):
         plt.specgram(df['Sensor'], Fs=2, cmap="rainbow", noverlap=250)
         plt.axis(False)
         scope_num = filename[:-4]
-        scope_num = scope_num[-1]
-        image_path = f'fabricated_data/{scope_num}/scope{scope_num}_var_{var_num}.png'
-        plt.savefig(image_path, dpi=300,
+        scope_num = scope_num[-2:]
+        # image_path = f'fabricated_data/{scope_num}/scope{scope_num}_var_{var_num}.jpg'
+        image_path = f'test_{var_num}.jpg'
+        plt.savefig(image_path, dpi=30,
                     bbox_inches='tight', transparent=False)
     elif kind == 'csv' and var_num > 0:
         df.to_csv(f'{filename}_var_{var_num}.csv', index=False)
@@ -132,5 +133,5 @@ def shift(df):
 
 
 if __name__ == '__main__':
-    filename = 'fabricated_data/csv/scope_0.csv'
+    filename = 'csv/scope_0.csv'
     generate_random_variation(filename, 0, 'image')
