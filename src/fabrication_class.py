@@ -22,9 +22,9 @@ if __name__ == '__main__':
     #         scope.generate_random_variation(kind='image')
     #         j += 1
     #     i += 1
-    i = 10
-    while i < 26:  # Loop through the different scopes
-        filename = f'csv/scope_{i}.csv'
+    i = 0
+    while i < 10:  # Loop through the different scopes
+        filename = f'csv/scope_0{i}.csv'
         scope = Fabrication(filename, i)
         scope.generate_random_variation(kind='image')
         i += 1

@@ -76,7 +76,7 @@ def generate_random_variation(filename, var_num, kind):
         scope_num = filename[:-4]
         scope_num = scope_num[-2:]
         # image_path = f'fabricated_data/{scope_num}/scope{scope_num}_var_{var_num}.jpg'
-        image_path = f'test_{var_num}.jpg'
+        image_path = f'src/test_data_for_cnn/test_{var_num}.jpg'
         plt.savefig(image_path, dpi=30,
                     bbox_inches='tight', transparent=False)
     elif kind == 'csv' and var_num > 0:
