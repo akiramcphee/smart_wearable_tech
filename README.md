@@ -18,6 +18,7 @@
 - 21/06 .wav file information added
 - 28/06 Spectrogram and Bandpass Filter added
 - 06/07 Relocated file locations updated
+- 01/08 Added Convnet Info
 
 ## Known Issues
 
@@ -25,7 +26,7 @@
 
 ## 1. Aims:
 
-- The sensor and software package will be designed to analyse vocalisations of the NATO phonetic alphabet, rather than the entirely of the English language.
+- The sensor and software package will be designed to classify vocalisations of the NATO phonetic alphabet, rather than the entirely of the English language.
 
 ## 2. Overview
 
@@ -153,7 +154,14 @@ A line graph version of the same data can be seen below:
 
 ## 5. Data Analysis
 
-blah blah can do later, copy from Project Plan
+### 5.1 Convolutional Neural Network
+
+- In `src` exists a jupyter notebook named `cnn.ipynb` which creates and trains a convolutional neural network using the fabricated data found in `fabricated data`.
+- It is currently trained to 5 epochs and has an accuracy of around 92%
+
+![](docs/cnn_validation.png)
+
+- If you want to try feeding the model a new input, you can generate a set of new test images to test by running `src/fabrication_class.py`, then feed into the end of the notebook
 
 ## 6. Database
 
