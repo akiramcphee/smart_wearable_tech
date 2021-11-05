@@ -34,7 +34,8 @@ def generate_random_variation(filename, var_num, kind):
     df = pd.read_csv(filename)
 
     if kind == 'comparison_image':
-        plt.plot(df['Time'], df['Sensor'])
+        plt.plot(df['Time'], df['Sensor'],
+                 label="Original signal", color="#029BFF")
 
     # Plot features
     plt.title("Comparison of randomly generated child to parent")
@@ -66,10 +67,9 @@ def generate_random_variation(filename, var_num, kind):
         v[v > 5] = 5
 
     plt.plot(df['Time'], df['Sensor'])
-    # if var_num == 0:
-    # plt.show()
+
     # Save plot
-    if (kind == 'image' or kind == 'comparison_image'):
+    if (kind == 'image'):
         plt.clf()
         plt.specgram(df['Sensor'], Fs=2, cmap="rainbow", noverlap=250)
         plt.axis(False)
@@ -79,6 +79,13 @@ def generate_random_variation(filename, var_num, kind):
         image_path = f'src/test_data_for_cnn/test_{var_num}.jpg'
         plt.savefig(image_path, dpi=30,
                     bbox_inches='tight', transparent=False)
+
+    elif kind == 'comparison_image':
+        plt.plot(df['Time'], df['Sensor'],
+                 label='Randomly Generated Variation', color="#EF4407")
+        plt.legend(loc='best')
+        plt.show()
+
     elif kind == 'csv' and var_num > 0:
         df.to_csv(f'{filename}_var_{var_num}.csv', index=False)
 
@@ -133,5 +140,5 @@ def shift(df):
 
 
 if __name__ == '__main__':
-    filename = 'csv/scope_0.csv'
-    generate_random_variation(filename, 0, 'image')
+    filename = 'csv/scope_00.csv'
+    generate_random_variation(filename, 0, 'comparison_image')
